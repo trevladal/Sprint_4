@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Homepage {
     //хэдер
@@ -80,9 +81,9 @@ public class Homepage {
     }
     //клик по конкретной точке входа
     public void clickEntryPoint(String indexEntryPoint) {
-        if (indexEntryPoint == "headerButtonEntryPoint") {
+        if ("headerButtonEntryPoint".equals(indexEntryPoint)) {
             clickOrderButton();
-        } else if (indexEntryPoint == "ultraBigButtonEntryPoint" ) {
+        } else if ("ultraBigButtonEntryPoint".equals(indexEntryPoint)) {
             clickUltraBigButton();
         }
     }

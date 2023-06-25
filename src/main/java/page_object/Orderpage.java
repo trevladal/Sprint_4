@@ -10,7 +10,7 @@ public class Orderpage {
     private WebDriver driver;
 
     //блок с заказом
-    private By OrderContent = By.className("Order_Content__bmtHS");
+    private By orderContent = By.className("Order_Content__bmtHS");
     //поле Имя
     private By nameField = By.xpath(".//input[@placeholder='* Имя']");
     //поле Фамилия
@@ -44,10 +44,10 @@ public class Orderpage {
     private By firstElementModal = By.xpath(".//div[@class = 'select-search__select']/ul/li[position() = 1]");
 
     //первое модальное окно после заказа
-    private By orderModal1 = By.xpath(".//div[@class = 'Order_Modal__YZ-d3']/div[text() = 'Хотите оформить заказ?']");
+    private By orderModalConfirmOrder = By.xpath(".//div[@class = 'Order_Modal__YZ-d3']/div[text() = 'Хотите оформить заказ?']");
 
     //второе модальное окно после заказа
-    private By orderModal2 = By.xpath(".//div[@class = 'Order_Modal__YZ-d3']/div[text() = 'Заказ оформлен']");
+    private By orderModalSuccessfullOrder = By.xpath(".//div[@class = 'Order_Modal__YZ-d3']/div[text() = 'Заказ оформлен']");
 
 
     public Orderpage(WebDriver driver) {
@@ -55,7 +55,7 @@ public class Orderpage {
     }
 
     //клик по выпадающему элементу
-    public void clickLastElement() {
+    public void clickLastElementMetroStationList() {
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.elementToBeClickable(stationList));
         driver.findElement(firstElementModal).click();
@@ -103,13 +103,13 @@ public class Orderpage {
 
     //клик по чекбоксам
     public void clickCheckboxBlack(Boolean isActive) {
-        if (isActive != false) {
+        if (isActive) {
             driver.findElement(checkboxBlack).click();
         }
     }
 
     public void clickCheckboxGrey(Boolean isActive) {
-        if (isActive != false) {
+        if (isActive) {
             driver.findElement(checkboxGrey).click();
         }
     }
@@ -130,7 +130,7 @@ public class Orderpage {
     //ждём прогрузку страницы
     public void waitForLoadOrderContent() {
         new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(OrderContent));
+                .until(ExpectedConditions.visibilityOfElementLocated(orderContent));
     }
 
     //клик по кнопке Заказать после заполнения полей
@@ -140,13 +140,13 @@ public class Orderpage {
 
     public void clickYesButtonFinal() {
         new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(orderModal1));
+                .until(ExpectedConditions.visibilityOfElementLocated(orderModalConfirmOrder));
         driver.findElement(yesButton).click();
     }
 
-    public void waitOrderModal2() {
+    public void waitOrderModalSecond() {
         new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(orderModal2));
+                .until(ExpectedConditions.visibilityOfElementLocated(orderModalSuccessfullOrder));
     }
 
 

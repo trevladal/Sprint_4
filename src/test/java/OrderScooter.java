@@ -52,7 +52,7 @@ public class OrderScooter {
     }
 
     @Test
-    public void test() {
+    public void testGetOrderScooter() {
 
         driver = new ChromeDriver();
         driver.get("https://qa-scooter.praktikum-services.ru/");
@@ -73,7 +73,7 @@ public class OrderScooter {
         objOrderpage.setSecondName(secondName);
         objOrderpage.setAddress(address);
         objOrderpage.setStation(station);
-        objOrderpage.clickLastElement();
+        objOrderpage.clickLastElementMetroStationList();
         objOrderpage.setPhone(phone);
 
         //Нажимаем далее
@@ -92,7 +92,7 @@ public class OrderScooter {
         objOrderpage.clickYesButtonFinal();
 
         //ждём появление модалки с успешным заказом
-        objOrderpage.waitOrderModal2();
+        objOrderpage.waitOrderModalSecond();
 
     }
 
